@@ -1,3 +1,7 @@
+type Props = {
+  id: string;
+};
+
 export function InputZone() {
   return (
     <>

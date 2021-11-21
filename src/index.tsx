@@ -1,13 +1,11 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import { InputZone } from "./components/InputZone";
+import { App } from "./App";
 
 //rootタグのついた場所にReactでつくったものを入れるのだ
 ReactDOM.render(
   <StrictMode>
-    <InputZone />
-    <InputZone />
-    <InputZone />
+    <App />
   </StrictMode>,
   document.getElementById("root")
 );

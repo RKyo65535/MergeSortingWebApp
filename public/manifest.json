@@ -1,0 +1,28 @@
+{
+  "short_name": "とど",
+  "name": "ToDo List",
+  "icons": [
+    {
+      "src": "react.png",
+      "sizes": "100x100",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "react192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "react512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "https://rkyo65535.github.io/React_Wo_Tsukaitainda",
+  "display": "standalone",
+  "theme_color": "#F3A696",
+  "background_color": "#ffffff"
+}

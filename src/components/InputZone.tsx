@@ -16,7 +16,7 @@ export function InputZone(props: Props) {
   }
 
   return (
-    <>
+    <li>
       <input
         id={props.id}
         type="text"
@@ -32,6 +32,6 @@ export function InputZone(props: Props) {
       >
         <span>削除</span>
       </button>
-    </>
+    </li>
   );
 }

@@ -40,7 +40,7 @@ export function mergeSort(
     currentMergeCount: m_currentMergeCount,
   };
 
-  console.log(returnParam);
+  //console.log(returnParam);
   //更新を掛ける
   action.updateAction(
     m_mergedItemList,
@@ -51,10 +51,10 @@ export function mergeSort(
   return returnParam;
 
   function selectLeft() {
-    console.log("左を選択");
+    //console.log("左を選択");
     //えらばれしものを配列に入れる。
     m_tempItemList = [...m_tempItemList, m_mergedItemList[m_currentLeft]];
-    console.log(m_tempItemList);
+    //console.log(m_tempItemList);
 
     //次の候補に移動
     m_currentLeft += 1;
@@ -71,7 +71,7 @@ export function mergeSort(
   }
 
   function selectRight() {
-    console.log("右を選択");
+    //console.log("右を選択");
     //えらばれしものを配列に入れる。
     m_tempItemList = [...m_tempItemList, m_mergedItemList[m_currentRight]];
     //次の候補に移動
@@ -90,37 +90,22 @@ export function mergeSort(
 
   //左のものをすべて一時配列に詰める
   function padAllLeft() {
-    console.log("右全滅");
+    //console.log("右全滅");
     while (
       m_currentLeft <= m_currentLeftEndPoint &&
       m_currentLeft < m_mergedItemList.length
     ) {
-      console.log(
-        "左つめ 今の左は" +
-          m_currentLeft +
-          "で、" +
-          m_currentLeftEndPoint +
-          "まで掃除"
-      );
       m_tempItemList = [...m_tempItemList, m_mergedItemList[m_currentLeft]];
       m_currentLeft += 1;
     }
   }
   //右のものをすべて一時配列に詰める
   function padAllRight() {
-    console.log("左全滅");
+    //console.log("左全滅");
     while (
       m_currentRight <= m_currentRightEndPoint &&
       m_currentRight < m_mergedItemList.length
     ) {
-      console.log(
-        "右つめ 今の右は" +
-          m_currentRight +
-          "で、" +
-          m_currentRightEndPoint +
-          "まで掃除"
-      );
-
       m_tempItemList = [...m_tempItemList, m_mergedItemList[m_currentRight]];
       m_currentRight += 1;
     }
@@ -128,7 +113,7 @@ export function mergeSort(
 
   //次のソートポイントを確認する。
   function updateSortPoint() {
-    console.log("次の地点の確認");
+    //console.log("次の地点の確認");
     //次の左右の終着点
     m_currentLeftEndPoint =
       m_currentLeftEndPoint + Math.pow(2, m_currentMergeCount + 1);
@@ -143,7 +128,7 @@ export function mergeSort(
 
     //以下、例外条件を潰していく。
     if (m_currentRight >= m_mergedItemList.length) {
-      console.log("時点の右始点は配列外" + m_currentRight);
+      //console.log("時点の右始点は配列外" + m_currentRight);
       //右の始点がそもそも配列外の時は、もう自動的に左の物を配列に入れてあげる。(左がない場合もある。)
       padAllLeft();
       //ここで1段階目のマージが完了

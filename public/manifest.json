@@ -1,6 +1,6 @@
 {
-  "short_name": "とど",
-  "name": "ToDo List",
+  "short_name": "マーソ",
+  "name": "Merge Sort App",
   "icons": [
     {
       "src": "react.png",
@@ -21,7 +21,7 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "https://rkyo65535.github.io/React_Wo_Tsukaitainda",
+  "start_url": "https://rkyo65535.github.io/MergeSortingWebApp",
   "display": "standalone",
   "theme_color": "#F3A696",
   "background_color": "#ffffff"

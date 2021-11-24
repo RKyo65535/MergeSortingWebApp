@@ -41,6 +41,12 @@ export function mergeSort(
   };
 
   console.log(returnParam);
+  //更新を掛ける
+  action.updateAction(
+    m_mergedItemList,
+    m_mergedItemList.length,
+    m_currentMergeCount
+  );
 
   return returnParam;
 

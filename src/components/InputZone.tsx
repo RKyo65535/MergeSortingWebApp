@@ -11,7 +11,7 @@ type Props = {
 export function InputZone(props: Props) {
   //フォームに入力されたときの関数。
   function hundleEdit(event: ChangeEvent<HTMLInputElement>) {
-    console.log(event.target.value);
+    //console.log(event.target.value);
     props.manageItem.name = event.target.value;
   }
 

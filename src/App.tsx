@@ -61,11 +61,12 @@ export function App() {
 
   //マージソート情報の初期化
   function initMergeSort() {
+    const tempList: ToMergeItem[] = [...currentItemList];
     const mergeAction: MergeSortAction = {
       type: "Create",
       initialize: {
         //とりあえず複数の段階でマージ完了したリスト
-        mergedItemList: currentItemList,
+        mergedItemList: tempList,
         //マージ途中のリスト
         tempItemList: [],
         //マージする幅の左右の着目点
@@ -77,6 +78,7 @@ export function App() {
         //2^これ 個のブロックを処理するという変数
         currentMergeCount: 0,
       },
+      updateAction: chackMergeCondition,
     };
     dispatchMergeState(mergeAction);
   }
@@ -86,9 +88,9 @@ export function App() {
     const mergeAction: MergeSortAction = {
       type: "LeftNext",
       initialize: initialState,
+      updateAction: chackMergeCondition,
     };
     dispatchMergeState(mergeAction);
-    chackMergeCondition();
   }
 
   //マージソートで右を選択。
@@ -96,19 +98,24 @@ export function App() {
     const mergeAction: MergeSortAction = {
       type: "RightNext",
       initialize: initialState,
+      updateAction: chackMergeCondition,
     };
     dispatchMergeState(mergeAction);
-    chackMergeCondition();
   }
 
   //マージの状態によって、現在の状態を変化させる
-  function chackMergeCondition() {
-    //現在のリストに反映
-    setCurrentItemList(mergeState.mergedItemList);
+  function chackMergeCondition(
+    list: ToMergeItem[],
+    itemLength: number,
+    currentMergeCount: number
+  ) {
     //ソートの必要が無くなったらこれを実行
-    if (currentItemList.length <= Math.pow(2, mergeState.currentMergeCount)) {
+    if (itemLength <= Math.pow(2, currentMergeCount)) {
+      console.log("モード変更！");
       setPhase("Result");
     }
+    //現在のリストに反映
+    setCurrentItemList([...list]);
   }
 
   //現在のリストを、良い感じに実態(View?)に渡してやる
@@ -138,8 +145,18 @@ export function App() {
   }
 
   let resultZone: JSX.Element = <></>;
+  let sortResult: JSX.Element[] = [];
   if (phase === "Result") {
     resultZone = <>マージ完了</>;
+
+    for (let i = 0; i < currentItemList.length; i++) {
+      let oneResult: JSX.Element = (
+        <p>
+          {i + 1}番目に好きなのは{currentItemList[i].name}です。
+        </p>
+      );
+      sortResult = [...sortResult, oneResult];
+    }
   }
 
   //ここから下がメイン部分
@@ -153,6 +170,7 @@ export function App() {
 
       {mergeSortZone}
       {resultZone}
+      {sortResult}
     </div>
   );
 }

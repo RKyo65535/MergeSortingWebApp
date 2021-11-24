@@ -10,8 +10,12 @@ import { mergeSort } from "./feature/mergeSort/mergeSort";
 import { MergeSortParameter } from "./feature/mergeSort/mergeSortPrameter";
 import { MergeSortAction } from "./feature/mergeSort/mergeSortAction";
 import { ResultText } from "./components/ResultText";
+import { message } from "./sandbox/message";
 
 export function App() {
+  //最初に遊びごごろを
+  message();
+
   //ここで全体を管理します。
 
   //現在のフェーズ(状態)

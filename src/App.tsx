@@ -101,7 +101,7 @@ export function App() {
     chackMergeCondition();
   }
 
-  //マージの状態に酔って、現在の状態を変化させる
+  //マージの状態によって、現在の状態を変化させる
   function chackMergeCondition() {
     //現在のリストに反映
     setCurrentItemList(mergeState.mergedItemList);

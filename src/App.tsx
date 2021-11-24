@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { AddItemButton } from "./components/AddItemButton";
 import { InputZone } from "./components/InputZone";
 import { ToMergeItem } from "./feature/toMergeItem";
@@ -6,6 +6,9 @@ import { nanoid } from "nanoid";
 import { ViewPhase } from "./feature/viewPhase";
 import { GotoSortButton } from "./components/GotoSortButton";
 import { MergeSortSelect } from "./components/MergeSortSelect";
+import { mergeSort } from "./feature/mergeSort/mergeSort";
+import { MergeSortParameter } from "./feature/mergeSort/mergeSortPrameter";
+import { MergeSortAction } from "./feature/mergeSort/mergeSortAction";
 
 export function App() {
   //ここで全体を管理します。
@@ -16,8 +19,21 @@ export function App() {
   //現在のリスト
   const [currentItemList, setCurrentItemList] = useState<ToMergeItem[]>([]);
 
+  //マージソートの最初の状態？
+  const initialState: MergeSortParameter = {
+    mergedItemList: currentItemList,
+    tempItemList: currentItemList,
+    currentLeft: 0,
+    currentRight: 0,
+    currentLeftEndPoint: 0,
+    currentRightEndPoint: 0,
+    currentMergeCount: 0,
+  };
+  //これを通じてマージソートの状態を扱う
+  const [state, dispatch] = useReducer(mergeSort, initialState, initMergeSort);
+
   //アイテム追加用の関数。
-  function AddItem() {
+  function addItem() {
     const newItem: ToMergeItem = {
       id: "id" + nanoid(),
       name: "",
@@ -34,6 +50,47 @@ export function App() {
   //現在の表示状態を変更する
   function changeState(phase: ViewPhase) {
     setPhase(phase);
+  }
+
+  //マージソート開始のお知らせ
+  function startMergeSort() {
+    changeState("Sort");
+    initMergeSort();
+  }
+
+  //マージソート情報の初期化
+  function initMergeSort() {
+    const mergeAction: MergeSortAction = {
+      type: "Create",
+      initialize: {
+        //とりあえず複数の段階でマージ完了したリスト
+        mergedItemList: currentItemList,
+        //マージ途中のリスト
+        tempItemList: currentItemList,
+        //マージする幅の左右の着目点
+        currentLeft: 0,
+        currentRight: 1,
+        //マージする左右の終着点
+        currentLeftEndPoint: 0,
+        currentRightEndPoint: 1,
+        //2^これ 個のブロックを処理するという変数
+        currentMergeCount: 0,
+      },
+    };
+    return {
+      //とりあえず複数の段階でマージ完了したリスト
+      mergedItemList: currentItemList,
+      //マージ途中のリスト
+      tempItemList: currentItemList,
+      //マージする幅の左右の着目点
+      currentLeft: 0,
+      currentRight: 1,
+      //マージする左右の終着点
+      currentLeftEndPoint: 0,
+      currentRightEndPoint: 1,
+      //2^これ 個のブロックを処理するという変数
+      currentMergeCount: 0,
+    };
   }
 
   //現在のリストを、良い感じに実態(View?)に渡してやる
@@ -68,8 +125,8 @@ export function App() {
       <h1>マージソートアプリ</h1>
 
       {currentShowItemList}
-      <AddItemButton pushEvent={AddItem} />
-      <GotoSortButton pushEvent={() => changeState("Sort")} />
+      <AddItemButton pushEvent={addItem} />
+      <GotoSortButton pushEvent={startMergeSort} />
 
       {mergeSortZone}
     </div>

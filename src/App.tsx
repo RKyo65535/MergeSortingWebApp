@@ -128,6 +128,7 @@ export function App() {
   //現在のリストを、良い感じに実態(View?)に渡してやる
   //入力フォームを複製できるのだ
   let currentShowItemList: JSX.Element[] = [];
+  let beforeMergeSortElement: JSX.Element[] = [];
   if (phase === "Set") {
     currentShowItemList = currentItemList.map((item) => (
       <InputZone
@@ -137,6 +138,10 @@ export function App() {
         deleteMyself={deleteItem}
       />
     ));
+    beforeMergeSortElement = [
+      <AddItemButton pushEvent={addItem} />,
+      <GotoSortButton pushEvent={startMergeSort} />,
+    ];
   }
 
   let mergeSortZone: JSX.Element = <></>;
@@ -174,8 +179,7 @@ export function App() {
       <h1>マージソートアプリ</h1>
 
       {currentShowItemList}
-      <AddItemButton pushEvent={addItem} />
-      <GotoSortButton pushEvent={startMergeSort} />
+      {beforeMergeSortElement}
 
       {mergeSortZone}
       {resultZone}

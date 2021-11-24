@@ -8,9 +8,9 @@ export function mergeSort(
   action: MergeSortAction
 ): MergeSortParameter {
   switch (action.type) {
-    case "LeftNext":
+    case "LeftNext": //左の選択がされたとき
       break;
-    case "RightNext":
+    case "RightNext": //右の選択がされたとき
       break;
     case "Create":
       return action.initialize;

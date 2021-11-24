@@ -21,16 +21,17 @@ export function App() {
 
   //マージソートの最初の状態？
   const initialState: MergeSortParameter = {
-    mergedItemList: currentItemList,
-    tempItemList: currentItemList,
+    mergedItemList: [],
+    tempItemList: [],
     currentLeft: 0,
     currentRight: 0,
     currentLeftEndPoint: 0,
     currentRightEndPoint: 0,
     currentMergeCount: 0,
   };
+
   //これを通じてマージソートの状態を扱う
-  const [state, dispatch] = useReducer(mergeSort, initialState);
+  const [mergeState, dispatchMergeState] = useReducer(mergeSort, initialState);
 
   //アイテム追加用の関数。
   function addItem() {
@@ -77,13 +78,42 @@ export function App() {
         currentMergeCount: 0,
       },
     };
+    dispatchMergeState(mergeAction);
+  }
 
-    dispatch(mergeAction);
+  //マージソートで左を選択
+  function selectLeft() {
+    const mergeAction: MergeSortAction = {
+      type: "LeftNext",
+      initialize: initialState,
+    };
+    dispatchMergeState(mergeAction);
+    chackMergeCondition();
+  }
+
+  //マージソートで右を選択。
+  function selectRight() {
+    const mergeAction: MergeSortAction = {
+      type: "RightNext",
+      initialize: initialState,
+    };
+    dispatchMergeState(mergeAction);
+    chackMergeCondition();
+  }
+
+  //マージの状態に酔って、現在の状態を変化させる
+  function chackMergeCondition() {
+    //現在のリストに反映
+    setCurrentItemList(mergeState.mergedItemList);
+    //ソートの必要が無くなったらこれを実行
+    if (currentItemList.length >= Math.pow(2, mergeState.currentMergeCount)) {
+      setPhase("Result");
+    }
   }
 
   //現在のリストを、良い感じに実態(View?)に渡してやる
   //入力フォームを複製できるのだ
-  var currentShowItemList: JSX.Element[] = [];
+  let currentShowItemList: JSX.Element[] = [];
   if (phase === "Set") {
     currentShowItemList = currentItemList.map((item) => (
       <InputZone
@@ -95,16 +125,21 @@ export function App() {
     ));
   }
 
-  var mergeSortZone: JSX.Element = <></>;
+  let mergeSortZone: JSX.Element = <></>;
   if (phase === "Sort") {
     mergeSortZone = (
       <MergeSortSelect
         leftItem={currentItemList[0]}
         rightItem={currentItemList[1]}
-        leftAction={() => {}}
-        rightAction={() => {}}
+        leftAction={selectLeft}
+        rightAction={selectRight}
       />
     );
+  }
+
+  let resultZone: JSX.Element = <></>;
+  if (phase === "Result") {
+    resultZone = <>マージ完了</>;
   }
 
   //ここから下がメイン部分
@@ -117,6 +152,7 @@ export function App() {
       <GotoSortButton pushEvent={startMergeSort} />
 
       {mergeSortZone}
+      {resultZone}
     </div>
   );
 }

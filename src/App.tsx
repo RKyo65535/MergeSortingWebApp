@@ -60,8 +60,10 @@ export function App() {
 
   //マージソート開始のお知らせ
   function startMergeSort() {
-    changeState("Sort");
-    initMergeSort();
+    if (currentItemList.length >= 2) {
+      changeState("Sort");
+      initMergeSort();
+    }
   }
 
   //マージソート情報の初期化

@@ -112,7 +112,7 @@ export function App() {
   ) {
     //ソートの必要が無くなったらこれを実行
     if (itemLength <= Math.pow(2, currentMergeCount)) {
-      console.log("モード変更！");
+      //console.log("モード変更！");
       setPhase("Result");
     }
     //現在のリストに反映

@@ -30,7 +30,7 @@ export function App() {
     currentMergeCount: 0,
   };
   //これを通じてマージソートの状態を扱う
-  const [state, dispatch] = useReducer(mergeSort, initialState, initMergeSort);
+  const [state, dispatch] = useReducer(mergeSort, initialState);
 
   //アイテム追加用の関数。
   function addItem() {
@@ -77,20 +77,8 @@ export function App() {
         currentMergeCount: 0,
       },
     };
-    return {
-      //とりあえず複数の段階でマージ完了したリスト
-      mergedItemList: currentItemList,
-      //マージ途中のリスト
-      tempItemList: currentItemList,
-      //マージする幅の左右の着目点
-      currentLeft: 0,
-      currentRight: 1,
-      //マージする左右の終着点
-      currentLeftEndPoint: 0,
-      currentRightEndPoint: 1,
-      //2^これ 個のブロックを処理するという変数
-      currentMergeCount: 0,
-    };
+
+    dispatch(mergeAction);
   }
 
   //現在のリストを、良い感じに実態(View?)に渡してやる

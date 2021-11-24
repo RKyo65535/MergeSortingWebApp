@@ -130,37 +130,35 @@ export function mergeSort(
   function updateSortPoint() {
     console.log("次の地点の確認");
     //次の左右の終着点
-    let tempLeftEndPoint =
+    m_currentLeftEndPoint =
       m_currentLeftEndPoint + Math.pow(2, m_currentMergeCount + 1);
-    let tempRightEndPoint =
+    m_currentRightEndPoint =
       m_currentRightEndPoint + Math.pow(2, m_currentMergeCount + 1);
 
     //次の左右の始点
-    let tempLeft = tempLeftEndPoint - Math.pow(2, m_currentMergeCount) + 1;
-    let tempRight = tempRightEndPoint - Math.pow(2, m_currentMergeCount) + 1;
+    m_currentLeft =
+      m_currentLeftEndPoint - Math.pow(2, m_currentMergeCount) + 1;
+    m_currentRight =
+      m_currentRightEndPoint - Math.pow(2, m_currentMergeCount) + 1;
 
     //以下、例外条件を潰していく。
-    if (tempRight >= m_mergedItemList.length) {
-      console.log("時点の右始点は配列外" + tempRight);
+    if (m_currentRight >= m_mergedItemList.length) {
+      console.log("時点の右始点は配列外" + m_currentRight);
       //右の始点がそもそも配列外の時は、もう自動的に左の物を配列に入れてあげる。(左がない場合もある。)
       padAllLeft();
       //ここで1段階目のマージが完了
       //マージ回数を増やし、その回数目での初期位置にする。
       m_currentMergeCount = m_currentMergeCount + 1;
-      tempLeftEndPoint = Math.pow(2, m_currentMergeCount) - 1;
-      tempRightEndPoint = Math.pow(2, m_currentMergeCount + 1) - 1;
-      tempLeft = tempLeftEndPoint - (Math.pow(2, m_currentMergeCount) - 1); //つまり0です。
-      tempRight = tempRightEndPoint - (Math.pow(2, m_currentMergeCount) - 1); //つまり2^currentMergeCountです。
+      m_currentLeftEndPoint = Math.pow(2, m_currentMergeCount) - 1;
+      m_currentRightEndPoint = Math.pow(2, m_currentMergeCount + 1) - 1;
+      m_currentLeft =
+        m_currentLeftEndPoint - (Math.pow(2, m_currentMergeCount) - 1); //つまり0です。
+      m_currentRight =
+        m_currentRightEndPoint - (Math.pow(2, m_currentMergeCount) - 1); //つまり2^currentMergeCountです。
       //さらに、マージしたリストを更新する
       m_mergedItemList = [...m_tempItemList];
       //一時リストは空にする。
       m_tempItemList = [];
     }
-
-    //最終的な値を代入する。(位置まわり)
-    m_currentLeft = tempLeft;
-    m_currentRight = tempRight;
-    m_currentLeftEndPoint = tempLeftEndPoint;
-    m_currentRightEndPoint = tempRightEndPoint;
   }
 }

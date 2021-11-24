@@ -9,6 +9,7 @@ import { MergeSortSelect } from "./components/MergeSortSelect";
 import { mergeSort } from "./feature/mergeSort/mergeSort";
 import { MergeSortParameter } from "./feature/mergeSort/mergeSortPrameter";
 import { MergeSortAction } from "./feature/mergeSort/mergeSortAction";
+import { ResultText } from "./components/ResultText";
 
 export function App() {
   //ここで全体を管理します。
@@ -151,9 +152,11 @@ export function App() {
 
     for (let i = 0; i < currentItemList.length; i++) {
       let oneResult: JSX.Element = (
-        <p>
-          {i + 1}番目に好きなのは{currentItemList[i].name}です。
-        </p>
+        <ResultText
+          ranking={i + 1}
+          itemName={currentItemList[i].name}
+          key={nanoid()}
+        />
       );
       sortResult = [...sortResult, oneResult];
     }

@@ -67,7 +67,7 @@ export function App() {
         //とりあえず複数の段階でマージ完了したリスト
         mergedItemList: currentItemList,
         //マージ途中のリスト
-        tempItemList: currentItemList,
+        tempItemList: [],
         //マージする幅の左右の着目点
         currentLeft: 0,
         currentRight: 1,
@@ -106,7 +106,7 @@ export function App() {
     //現在のリストに反映
     setCurrentItemList(mergeState.mergedItemList);
     //ソートの必要が無くなったらこれを実行
-    if (currentItemList.length >= Math.pow(2, mergeState.currentMergeCount)) {
+    if (currentItemList.length <= Math.pow(2, mergeState.currentMergeCount)) {
       setPhase("Result");
     }
   }
@@ -129,8 +129,8 @@ export function App() {
   if (phase === "Sort") {
     mergeSortZone = (
       <MergeSortSelect
-        leftItem={currentItemList[0]}
-        rightItem={currentItemList[1]}
+        leftItem={currentItemList[mergeState.currentLeft]}
+        rightItem={currentItemList[mergeState.currentRight]}
         leftAction={selectLeft}
         rightAction={selectRight}
       />

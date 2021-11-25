@@ -25,6 +25,7 @@ export function InputZone(props: Props) {
         placeholder="概念を入力"
         onChange={hundleEdit}
       ></input>
+
       <button
         type="button"
         className="name-delete-button"

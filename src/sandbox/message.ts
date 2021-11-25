@@ -5,9 +5,7 @@ export function message() {
   font-family: serif;
   font-weight: bold;
    color: #6e0202;
-   background: #db722c;
-   margin: 20px;
-   line-height: 2;`;
+   background: #db722c;`;
   const style2 = `font-size: 14px;
    font-family: serif;
    font-weight: bold;
@@ -18,14 +16,16 @@ export function message() {
     color: #d4fff5;
    background: #0d3d52;`;
   console.warn("はずかしいやん");
-  console.log("%cゆっくりマージソートしていってね！", style1);
+  console.log(
+    `
+%c    ゆっくりマージソートしていってね！
+%c  それは儚きあなたの思いを無残にも具現化してしまうアルゴリズム……
+%c                     そして貴方はGitHubへと誘われる…… 
 
-  console.log(
-    "%cそれは儚きあなたの思いを無残にも具現化してしまうアルゴリズム……",
-    style2
-  );
-  console.log(
-    "%c                    そして貴方はgithubへと誘われる……                    \nhttps://github.com/RKyo65535/MergeSortingWebApp",
+https://github.com/RKyo65535/MergeSortingWebApp
+`,
+    style1,
+    style2,
     style3
   );
   console.groupEnd();

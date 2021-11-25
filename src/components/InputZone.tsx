@@ -15,9 +15,7 @@ export function InputZone(props: Props) {
     props.manageItem.name = event.target.value;
   }
 
-  const [exCount, setEXCount] = useState<number>(
-    Math.floor(Math.random() * 10)
-  );
+  const [exCount] = useState<number>(Math.floor(Math.random() * 10));
 
   function returnEx(): string {
     let str: string = "!";

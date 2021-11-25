@@ -1,6 +1,7 @@
 html {
   background-color: #f3a696;
   font-size: 2vw;
+  font-family: serif;
 }
 
 body {
@@ -9,6 +10,8 @@ body {
 
 .memomemoColor {
   color: #f3a696; /*テーマ色？*/
+  color: #f7d6cf; /*テーマ色の亜種？*/
+  color: #ec6c53; /*タイトル色？*/
   color: #afa2ff; /*サブ色？*/
   color: #7a89c2; /*サブサブ色？*/
   color: #72788d; /*ちょっと嫌な色*/
@@ -18,7 +21,7 @@ body {
 .title {
   font-size: 10vh;
   animation: RotateShadow 4s linear infinite;
-  background-color: #7a89c2;
+  background-color: #ec6c53;
 }
 @keyframes RotateShadow {
   0% {
@@ -49,7 +52,28 @@ li {
 
 .btn.delete-button {
   border: 0.2vw solid #636b61;
-  color: brown;
+
+  background-color: #72788d;
+}
+
+.btn.add-item-button {
+  border: 0.2vw solid #f7d6cf;
+  background-color: #afa2ff;
+}
+
+.btn.sort-button {
+  border: 0.2vw solid #f7d6cf;
+  background-color: #afa2ff;
+}
+
+.btn.left-select-button {
+  border: 0.2vw solid #7a89c2;
+  background-color: #afa2ff; /*サブ色？*/
+}
+
+.btn.right-select-button {
+  border: 0.2vw solid #afa2ff;
+  background-color: #7a89c2; /*サブサブ色？*/
 }
 
 .input {
@@ -57,4 +81,10 @@ li {
   width: 70vw;
   font-size: 2vw;
   margin: 0.3vw;
+  border-radius: 0.3vw; /*ボックス角の丸み*/
+  border: 0.2vw solid #afa2ff; /*枠線*/
+  background-color: #f7d6cf;
+}
+.input::placeholder {
+  color: #72788d;
 }

@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/MergeSortingWebApp/static/css/main.583d0045.chunk.css",
-    "main.js": "/MergeSortingWebApp/static/js/main.f1dda571.chunk.js",
-    "main.js.map": "/MergeSortingWebApp/static/js/main.f1dda571.chunk.js.map",
+    "main.css": "/MergeSortingWebApp/static/css/main.3ececa76.chunk.css",
+    "main.js": "/MergeSortingWebApp/static/js/main.1db149d7.chunk.js",
+    "main.js.map": "/MergeSortingWebApp/static/js/main.1db149d7.chunk.js.map",
     "runtime-main.js": "/MergeSortingWebApp/static/js/runtime-main.1f8f55b4.js",
     "runtime-main.js.map": "/MergeSortingWebApp/static/js/runtime-main.1f8f55b4.js.map",
-    "static/js/2.11e28f6e.chunk.js": "/MergeSortingWebApp/static/js/2.11e28f6e.chunk.js",
-    "static/js/2.11e28f6e.chunk.js.map": "/MergeSortingWebApp/static/js/2.11e28f6e.chunk.js.map",
+    "static/js/2.58671cc6.chunk.js": "/MergeSortingWebApp/static/js/2.58671cc6.chunk.js",
+    "static/js/2.58671cc6.chunk.js.map": "/MergeSortingWebApp/static/js/2.58671cc6.chunk.js.map",
     "index.html": "/MergeSortingWebApp/index.html",
-    "static/css/main.583d0045.chunk.css.map": "/MergeSortingWebApp/static/css/main.583d0045.chunk.css.map",
-    "static/js/2.11e28f6e.chunk.js.LICENSE.txt": "/MergeSortingWebApp/static/js/2.11e28f6e.chunk.js.LICENSE.txt"
+    "static/css/main.3ececa76.chunk.css.map": "/MergeSortingWebApp/static/css/main.3ececa76.chunk.css.map",
+    "static/js/2.58671cc6.chunk.js.LICENSE.txt": "/MergeSortingWebApp/static/js/2.58671cc6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1f8f55b4.js",
-    "static/js/2.11e28f6e.chunk.js",
-    "static/css/main.583d0045.chunk.css",
-    "static/js/main.f1dda571.chunk.js"
+    "static/js/2.58671cc6.chunk.js",
+    "static/css/main.3ececa76.chunk.css",
+    "static/js/main.1db149d7.chunk.js"
   ]
 }

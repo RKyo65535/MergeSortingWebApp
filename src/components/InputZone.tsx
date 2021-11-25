@@ -20,7 +20,7 @@ export function InputZone(props: Props) {
       <input
         id={props.id}
         type="text"
-        className="name-input-button"
+        className="input name-input"
         autoComplete="on"
         placeholder="概念を入力"
         onChange={hundleEdit}
@@ -28,7 +28,7 @@ export function InputZone(props: Props) {
 
       <button
         type="button"
-        className="name-delete-button"
+        className="btn delete-button"
         onClick={() => props.deleteMyself(props.id)}
       >
         <span>削除</span>

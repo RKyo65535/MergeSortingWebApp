@@ -5,7 +5,7 @@ type Props = {
 
 export function ResultText(props: Props) {
   return (
-    <p>
+    <p className="txt result-text">
       {props.ranking}番目に好きなのは{props.itemName}です。
     </p>
   );

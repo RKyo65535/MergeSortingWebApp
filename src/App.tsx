@@ -59,6 +59,8 @@ export function App() {
     };
     setCurrentItemList([...currentItemList, newItem]);
   }
+  //要素が追加されたら、下スクロールする
+  useEffect(() => window.scrollBy(0, 100), [currentItemList]);
 
   function deleteItem(key: string) {
     //自身以外をリストに残す形で、自信を滅する
@@ -192,7 +194,7 @@ export function App() {
   //ここから下がメイン部分
   return (
     <div className="margeAll">
-      <h1>マージソートアプリ</h1>
+      <h1 className="title">マージソートアプリ</h1>
 
       {currentShowItemList}
       {beforeMergeSortElement}

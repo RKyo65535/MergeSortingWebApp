@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { ToMergeItem } from "../feature/toMergeItem";
 
 type Props = {
@@ -15,6 +15,19 @@ export function InputZone(props: Props) {
     props.manageItem.name = event.target.value;
   }
 
+  const [exCount, setEXCount] = useState<number>(
+    Math.floor(Math.random() * 10)
+  );
+
+  function returnEx(): string {
+    let str: string = "!";
+    for (let i = 0; i < exCount; i++) {
+      str += "!";
+    }
+
+    return str;
+  }
+
   return (
     <li>
       <input
@@ -22,7 +35,7 @@ export function InputZone(props: Props) {
         type="text"
         className="input name-input"
         autoComplete="on"
-        placeholder="概念を入力"
+        placeholder={"概念を入力" + returnEx()}
         onChange={hundleEdit}
       ></input>
 
